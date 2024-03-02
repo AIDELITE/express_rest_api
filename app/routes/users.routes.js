@@ -11,7 +11,7 @@ module.exports = app => {
     router.get("/", users.findAll);
 
     // Retrieve all published users
-    router.get("/published", users.findAllActive);
+    router.get("/active", users.findAllActive);
 
     // Retrieve a single User with id
     router.get("/:id", users.findOne);

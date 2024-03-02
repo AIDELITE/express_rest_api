@@ -12,7 +12,7 @@ const Users = function (users) {
 Users.create = (newUsers, result) => {
     sql.query("INSERT INTO `users` SET ?", newUsers, (err, res) => {
         if (err) {
-            console.log("error: ", err);
+            console.log("Creation error: ", err);
             result(err, null);
             return;
         }
@@ -37,12 +37,12 @@ Users.findById = (id, result) => {
         }
 
         if (res.length) {
-            console.log("found tutorial: ", res[0]);
+            console.log("found User: ", res[0]);
             result(null, res[0]);
             return;
         }
 
-        // not found Tutorial with the id
+        // not found User with the id
         result({
             kind: "not_found"
         }, null);
@@ -93,7 +93,7 @@ Users.updateById = (id, user, result) => {
             }
 
             if (res.affectedRows == 0) {
-                // not found Tutorial with the id
+                // not found User with the id
                 result({
                     kind: "not_found"
                 }, null);
