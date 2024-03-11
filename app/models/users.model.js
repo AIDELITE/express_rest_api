@@ -10,6 +10,8 @@ const Users = function (users) {
 }
 
 Users.create = (newUsers, result) => {
+    //script for creating /adding new users into the database.
+    //-----------code tested and working--------------------
     sql.query("INSERT INTO `users` SET ?", newUsers, (err, res) => {
         if (err) {
             console.log("Creation error: ", err);
