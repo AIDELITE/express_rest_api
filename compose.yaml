@@ -1,0 +1,32 @@
+services:
+  db_service:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root1
+      MYSQL_DATABASE: express_db
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_db_storage:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - my_network
+
+  node_app:
+    build: .
+    depends_on:
+      - db_service
+    ports:
+      - "3000:3000"
+    networks:
+      - my_network
+
+volumes:
+  mysql_db_storage:
+networks:
+  my_network:

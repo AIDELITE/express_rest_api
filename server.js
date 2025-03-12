@@ -5,7 +5,7 @@ const usersRoutes = require('./app/routes/users.routes');
 const app = express();
 
 var corsOptions = {
-    origin: "http://localhost:80"
+    origin: "http://localhost:8000"
   };
 //implements the use of CORs
 app.use(cors(corsOptions));

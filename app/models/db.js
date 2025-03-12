@@ -1,13 +1,20 @@
-const mysql = require('mysql');
-const dbConfig = require('../config/db.config');
+const mysql = require('mysql2');
 
-// Create a connection to the database
+//Create a connection to the database
 const connection = mysql.createConnection({
-    host: dbConfig.HOST,
-    user: dbConfig.USER,
-    password: dbConfig.PASSWORD,
-    database: dbConfig.DB
+    host: 'db_service', // Or the container IP if needed
+    port: 3306,        // Change if using a different port
+    user: 'root',
+    password: 'root1',
+    database: 'express_db'
 });
+
+// const connection = mysql.createConnection({
+//     host: 'localhost', // Or the container IP if needed     // Change if using a different port
+//     user: 'root',
+//     password: '',
+//     database: 'express_db'
+// });
 
 // open the MySQL connection
 connection.connect(error => {
